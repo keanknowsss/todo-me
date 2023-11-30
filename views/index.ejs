@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com"
+		/>
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato&family=Noto+Serif:ital,wght@1,100&family=Nova+Square&display=swap"
+			rel="stylesheet"
+		/>
+		<title>ToDo.me - Things for me to do</title>
+	</head>
+	<body>
+		<h1>ToDo.me</h1>
+		<h2><em>things for me to do</em></h2>
+		<form
+			action="/add-task"
+			method="POST"
+		>
+			<input
+				type="text"
+				name="task"
+				id="task"
+			/>
+			<button>Add Task</button>
+		</form>
+		<ul>
+			<li>
+				<div>
+					<input
+						type="checkbox"
+						name="task_complete"
+						id="task-complete"
+					/>
+					<h3>Task Number 1</h3>
+					<p>Lorem ipsum dolor sit.</p>
+				</div>
+			</li>
+		</ul>
+	</body>
+</html>
