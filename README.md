@@ -1,4 +1,4 @@
-# A Capstone Project with Basic Crud Functionality
+# A Todo List App with Basic Crud Functionality
 
 ---
 
