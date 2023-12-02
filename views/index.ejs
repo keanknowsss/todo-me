@@ -30,24 +30,30 @@
 		<title>ToDo.me - Things for me to do</title>
 	</head>
 	<body>
-		<h1>ToDo.me</h1>
-		<h2><em>things for me to do</em></h2>
-		<form
-			action="/add-task"
-			method="POST"
-		>
-			<input
-				type="text"
-				name="task"
-				id="task"
-				placeholder="Enter a Task..."
-			/>
-			<button>Add Task</button>
-		</form>
-		<ul>
-			<% if (locals.tasks.length > 0) { %> <% tasks.forEach(task => { %>
-			<li>
-				<div>
+		<main>
+			<div class="title">
+				<h1>ToDo.me</h1>
+				<h2><em>things for me to do</em></h2>
+			</div>
+			<hr />
+			<div class="add-task">
+				<form
+					action="/add-task"
+					method="POST"
+				>
+					<input
+						type="text"
+						name="task"
+						id="task"
+						placeholder="Add Task here"
+					/>
+					<button><span class="material-symbols-outlined"> add </span></button>
+				</form>
+			</div>
+
+			<ul class="tasks">
+				<% if (locals.tasks.length > 0) { %> <% tasks.forEach((task, index) => { %>
+				<li>
 					<input
 						type="checkbox"
 						name="task_complete"
@@ -56,20 +62,20 @@
 
 					<span><%= task %></span>
 					<form
-						action="/edit-task"
+						action="/edit-task/<%= index %>"
 						method="post"
 					>
 						<button><span class="material-symbols-outlined"> edit </span></button>
 					</form>
 					<form
-						action="/delete-task"
+						action="/delete-task/<%= index %>"
 						method="post"
 					>
 						<button><span class="material-symbols-outlined"> delete </span></button>
 					</form>
-				</div>
-			</li>
-			<% }) %> <% } %>
-		</ul>
+				</li>
+				<% }) %> <% } %>
+			</ul>
+		</main>
 	</body>
 </html>

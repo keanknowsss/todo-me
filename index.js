@@ -21,8 +21,13 @@ app.post("/add-task", (req, res) => {
 	if (task) tasks.push(task);
 	res.redirect("/");
 });
-app.post("/edit-task", (req, res) => {
+app.post("/edit-task/:index", (req, res) => {
 	console.log('edit here');
+});
+app.post("/delete-task/:index", (req, res) => {
+	const TASK_INDEX = req.params.index;
+	tasks.splice(TASK_INDEX, 1);
+	res.redirect('/');
 });
 
 // Server Listener
