@@ -22,7 +22,10 @@ app.post("/add-task", (req, res) => {
 	res.redirect("/");
 });
 app.post("/edit-task/:index", (req, res) => {
-	console.log('edit here');
+	const TASK_INDEX = req.params.index;
+	const NEW_TASK = req.body["edited_task"];
+	tasks[TASK_INDEX] = NEW_TASK;
+	res.redirect("/");
 });
 app.post("/delete-task/:index", (req, res) => {
 	const TASK_INDEX = req.params.index;
