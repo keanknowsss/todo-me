@@ -27,6 +27,7 @@
 			rel="stylesheet"
 			href="./styles/main.css"
 		/>
+		<script src="script.js"></script>
 		<title>ToDo.me - Things for me to do</title>
 	</head>
 	<body>
@@ -54,39 +55,42 @@
 			<ul class="tasks">
 				<% if (locals.tasks.length > 0) { %> <% tasks.forEach((task, index) => { %>
 				<li>
-					<div class="first-part">
-						<input
-							type="checkbox"
-							name="task_complete"
-							id="task-complete-<%= index %>"
-						/>
+					<div class="task" id="task-<%= index %>">
+						<div class="first-part">
+							<input
+								type="checkbox"
+								name="task_complete"
+								id="task-complete-<%= index %>"
+							/>
 
-						<label for="task-complete-<%= index %>"><%= task %></label>
+							<label for="task-complete-<%= index %>"><%= task %></label>
+						</div>
+						<div class="buttons">
+							<button class="edit-btn"  data-index="<%= index %>"><span class="material-symbols-outlined"> edit </span></button>
+							<form
+								action="/delete-task/<%= index %>"
+								method="post"
+							>
+								<button><span class="material-symbols-outlined"> delete </span></button>
+							</form>
+						</div>
 					</div>
-					<div class="buttons">
-						<form
-							action="/edit-task/<%= index %>"
-							method="post"
-						>
-							<button><span class="material-symbols-outlined"> edit </span></button>
-						</form>
-						<form
-							action="/delete-task/<%= index %>"
-							method="post"
-						>
-							<button><span class="material-symbols-outlined"> delete </span></button>
-						</form>
-					</div>
+					<form
+						action="/edit-task/<%= index %>"
+						method="post"
+						class="edit"
+						id="edit-form-<%= index %>"
+					>
+						<input
+							type="text"
+							value="<%= task %>"
+						/>
+						<button type="submit"><span class="material-symbols-outlined"> save </span></button>
+						<button id="close" class="close-btn" data-index="<%= index %>"><span class="material-symbols-outlined"> close </span></button>
+					</form>
 				</li>
 				<% }) %> <% } %>
 			</ul>
 		</main>
-		<div class="modal">
-			<div class="modal-container">
-				<div class="modal-body">
-					
-				</div>
-			</div>
-		</div>
 	</body>
 </html>
