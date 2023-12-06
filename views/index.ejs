@@ -55,18 +55,32 @@
 			<ul class="tasks">
 				<% if (locals.tasks.length > 0) { %> <% tasks.forEach((task, index) => { %>
 				<li>
-					<div class="task" id="task-<%= index %>">
+					<div
+						class="task"
+						id="task-<%= index %>"
+					>
 						<div class="first-part">
 							<input
 								type="checkbox"
 								name="task_complete"
+								class="checkbox"
 								id="task-complete-<%= index %>"
+								data-index="<%= index %>"
 							/>
 
-							<label for="task-complete-<%= index %>"><%= task %></label>
+							<label
+								for="task-complete-<%= index %>"
+								id="task-name-<%= index %>"
+								><%= task %></label
+							>
 						</div>
 						<div class="buttons">
-							<button class="edit-btn"  data-index="<%= index %>"><span class="material-symbols-outlined"> edit </span></button>
+							<button
+								class="edit-btn"
+								data-index="<%= index %>"
+							>
+								<span class="material-symbols-outlined"> edit </span>
+							</button>
 							<form
 								action="/delete-task/<%= index %>"
 								method="post"
@@ -87,7 +101,13 @@
 							value="<%= task %>"
 						/>
 						<button type="submit"><span class="material-symbols-outlined"> save </span></button>
-						<button id="close" class="close-btn" data-index="<%= index %>"><span class="material-symbols-outlined"> close </span></button>
+						<button
+							id="close"
+							class="close-btn"
+							data-index="<%= index %>"
+						>
+							<span class="material-symbols-outlined"> close </span>
+						</button>
 					</form>
 				</li>
 				<% }) %> <% } %>

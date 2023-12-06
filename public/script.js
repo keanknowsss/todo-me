@@ -1,28 +1,41 @@
+document.addEventListener("DOMContentLoaded", function () {
+	let editBtn = document.querySelectorAll(".edit-btn");
+	let closeBtn = document.querySelectorAll(".close-btn");
+	let checkBox = document.querySelectorAll(".checkbox");
 
+	editBtn.forEach((button) => {
+		button.addEventListener("click", function () {
+			const index = this.getAttribute("data-index");
+			const taskContainer = document.getElementById(`task-${index}`);
+			const editForm = document.getElementById(`edit-form-${index}`);
 
-document.addEventListener('DOMContentLoaded', function () {
-    let editBtn = document.querySelectorAll('.edit-btn');
-    let closeBtn = document.querySelectorAll('.close-btn');
+			taskContainer.style.display = "none";
+			editForm.style.display = "flex";
+		});
+	});
 
-    editBtn.forEach(button => {
-        button.addEventListener('click', function () {
-            const index = this.getAttribute('data-index');
-            const taskContainer = document.getElementById(`task-${index}`);
-            const editForm = document.getElementById(`edit-form-${index}`);
+	closeBtn.forEach((button) => {
+		button.addEventListener("click", function () {
+			const index = this.getAttribute("data-index");
+			const taskContainer = document.getElementById(`task-${index}`);
+			const editForm = document.getElementById(`edit-form-${index}`);
 
-            taskContainer.style.display = 'none';
-            editForm.style.display = 'flex';
-        });
-    });
+			taskContainer.style.display = "flex";
+			editForm.style.display = "none";
+		});
+	});
 
-    closeBtn.forEach(button => {
-        button.addEventListener('click', function () {
-            const index = this.getAttribute('data-index');
-            const taskContainer = document.getElementById(`task-${index}`);
-            const editForm = document.getElementById(`edit-form-${index}`);
+	checkBox.forEach((box) => {
+		box.addEventListener("change", function () {
+			const index = this.getAttribute("data-index");
+			const taskText = document.getElementById(`task-name-${index}`);
+			console.log("checked");
 
-            taskContainer.style.display = 'flex';
-            editForm.style.display = 'none';
-        });
-    })
+			if (this.checked) {
+				taskText.style.textDecoration = "line-through";
+			} else {
+				taskText.style.textDecoration = "none";
+			}
+		});
+	});
 });
